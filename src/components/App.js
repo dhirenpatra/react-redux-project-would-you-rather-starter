@@ -1,29 +1,32 @@
 import React, { Component, Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading";
+
+import handleInitialData from "../actions/initialData";
+
 import LoginPage from "./LoginPage";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
 import MyCard from "./MyCard";
 import NotFound from "./NotFound";
-import { connect } from "react-redux";
-import handleInitialData from "../actions/initialData";
 import Leaderboard from "./LeaderBoard";
 import AddQuestion from "./AddQuestion";
 import ProtectedRoute from "./ProtectedRoute";
+import NewUser from "./NewUser";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
-    console.log(this.props);
   }
 
   render() {
     return (
       <Fragment>
         <NavBar name={this.props.name} />
+        <LoadingBar />
         <div className="container">
           <Switch>
-            <Route path="/login" exact component={LoginPage} />
             <ProtectedRoute exact path="/" component={HomePage} />
             <ProtectedRoute
               exact
@@ -32,6 +35,8 @@ class App extends Component {
             />
             <ProtectedRoute exact path="/leaderboard" component={Leaderboard} />
             <ProtectedRoute exact path="/add" component={AddQuestion} />
+            <Route exact path="/register" component={NewUser} />
+            <Route exact path="/login" component={LoginPage} />
             <ProtectedRoute component={NotFound} />
           </Switch>
         </div>
@@ -40,10 +45,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions }) {
+function mapStateToProps({ authedUser }) {
   return {
-    questions,
-    authedUser,
     name: authedUser.username,
   };
 }

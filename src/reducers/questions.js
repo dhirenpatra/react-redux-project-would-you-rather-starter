@@ -2,7 +2,7 @@ import {
   INITIAL_QUESTIONS,
   ADD_USER_ID_IN_QUESTION,
   ADD_QUESTION,
-} from "../actions/questions";
+} from "../actions/types";
 
 export const initialQuestionData = (state = {}, action) => {
   switch (action.type) {

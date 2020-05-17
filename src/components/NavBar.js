@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import { logout } from "../actions/shared";
 
 class NavBar extends React.Component {
+  state = {
+    registerUser: false,
+  };
   handlelogout = () => {
     this.props.dispatch(logout());
   };

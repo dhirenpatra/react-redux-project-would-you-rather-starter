@@ -203,3 +203,27 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
     }, 500);
   });
 }
+
+function formatUser({ username, name }) {
+  return {
+    id: username,
+    name: name,
+    avatarURL: "https://react.semantic-ui.com/images/avatar/small/zoe.jpg",
+    answers: {},
+    questions: [],
+  };
+}
+
+export function _registerUser(newuser) {
+  return new Promise((res, rej) => {
+    const newlyRegistereduser = formatUser(newuser);
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [newlyRegistereduser.id]: newlyRegistereduser,
+      };
+      res(newlyRegistereduser);
+    }, 500);
+  });
+}

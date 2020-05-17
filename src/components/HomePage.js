@@ -50,8 +50,6 @@ const mapStateToProps = ({ authedUser, users, questions }) => {
     .filter((id) => !questionsAnswered.includes(id))
     .sort((a, b) => questions[b].timestamp - questions[a].timestamp);
   return {
-    authedUser,
-    user,
     questionsAnswered,
     unansweredIds,
     questions,

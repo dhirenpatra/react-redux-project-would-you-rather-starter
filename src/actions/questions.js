@@ -2,9 +2,11 @@ import { _saveQuestionAnswer, _saveQuestion } from "../utils/_DATA";
 import { addAnswerToTheQuestions, addQuestionToUser } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading";
 
-export const INITIAL_QUESTIONS = "INITIAL_QUESTIONS";
-export const ADD_USER_ID_IN_QUESTION = "ADD_USER_ID_IN_QUESTION";
-export const ADD_QUESTION = "ADD_QUESTION";
+import {
+  INITIAL_QUESTIONS,
+  ADD_USER_ID_IN_QUESTION,
+  ADD_QUESTION,
+} from "./types";
 
 export const initialQuestions = (questions) => {
   return {
@@ -30,13 +32,18 @@ export const handleAnswerForQuestion = (question_id, answer) => {
       authedUser: authedUser.userId,
       qid: question_id,
       answer,
-    }).then(() => {
-      dispatch(
-        addUserIdWhoAnswerdToQuestion(authedUser.userId, question_id, answer)
-      );
-      dispatch(addAnswerToTheQuestions(authedUser.userId, question_id, answer));
-      dispatch(hideLoading());
-    });
+    })
+      .then(() => {
+        dispatch(
+          addUserIdWhoAnswerdToQuestion(authedUser.userId, question_id, answer)
+        );
+      })
+      .then(() =>
+        dispatch(
+          addAnswerToTheQuestions(authedUser.userId, question_id, answer)
+        )
+      )
+      .then(() => dispatch(hideLoading()));
   };
 };
 
@@ -55,10 +62,11 @@ export const handleAddQuestion = ({ optionOne, optionTwo }) => {
       optionOneText: optionOne,
       optionTwoText: optionTwo,
       author: authedUser.userId,
-    }).then((question) => {
-      dispatch(addQuestion(question));
-      dispatch(addQuestionToUser(question, authedUser.userId));
-      dispatch(hideLoading());
-    });
+    })
+      .then((question) => {
+        dispatch(addQuestion(question));
+        dispatch(addQuestionToUser(question, authedUser.userId));
+      })
+      .then(() => dispatch(hideLoading()));
   };
 };

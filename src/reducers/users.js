@@ -2,7 +2,8 @@ import {
   INITIAL_USERS,
   ADD_ANSWER_IN_QUESTION,
   ADD_QUESTION_IN_USER,
-} from "../actions/users";
+  REGISTER_USER,
+} from "../actions/types";
 
 export const users = (state = {}, action) => {
   switch (action.type) {
@@ -31,6 +32,12 @@ export const users = (state = {}, action) => {
           ...state[userid],
           questions: [...state[userid].questions, question.id],
         },
+      };
+    case REGISTER_USER:
+      const { user } = action;
+      return {
+        ...state,
+        [user.id]: user,
       };
     default:
       return state;

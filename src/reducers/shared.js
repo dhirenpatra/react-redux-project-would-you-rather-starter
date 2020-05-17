@@ -1,4 +1,4 @@
-import { AUTHED_USER, LOGOUT_USER } from "../actions/shared";
+import { AUTHED_USER, LOGOUT_USER } from "../actions/types";
 
 export const authedUser = (state = {}, { type, userId, username }) => {
   switch (type) {

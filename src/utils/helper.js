@@ -4,11 +4,20 @@ export const formatDate = (timestamp) => {
   return time;
 };
 
+// Not being used anymore replaced by Redirect
 export const delayRedirect = (time, props) => {
   const {
     history: { push },
   } = props;
   setTimeout(() => push("/"), time);
+};
+
+// Not being used anymore replaced by connect -- authedUser change for registration
+export const noDelayRedirect = (props) => {
+  const {
+    history: { push },
+  } = props;
+  push("/");
 };
 
 const score = (user) =>

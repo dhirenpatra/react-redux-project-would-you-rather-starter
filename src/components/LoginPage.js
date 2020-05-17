@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { authedUser } from "../actions/shared";
+import { Link } from "react-router-dom";
 
 export class LoginPage extends Component {
   state = {
@@ -26,6 +27,7 @@ export class LoginPage extends Component {
   };
   render() {
     const { users, userIds } = this.props;
+
     return (
       <div className="card card-login mx-auto text-center bg-light">
         <div className="card-header mx-auto bg-dark">
@@ -62,6 +64,19 @@ export class LoginPage extends Component {
                 className="btn btn-outline-danger float-right login_btn"
               />
             </div>
+            <p
+              className="text-whitesmoke text-center"
+              style={{ margin: "auto 20px auto" }}
+            >
+              <strong>Do not have an account?</strong>
+            </p>
+            <Link
+              to="/register"
+              className="btn btn-outline-success text-darkyellow"
+              style={{ color: "white" }}
+            >
+              Register
+            </Link>
           </form>
         </div>
       </div>
@@ -69,7 +84,7 @@ export class LoginPage extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, authedUser }) => {
   return {
     users,
     userIds: Object.keys(users),

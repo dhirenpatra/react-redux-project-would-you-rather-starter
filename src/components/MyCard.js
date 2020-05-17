@@ -108,6 +108,10 @@ export class MyCard extends Component {
         </form>
         {this.state.answered && (
           <div style={{ margin: "30px" }}>
+            <h3 style={{ margin: "30px", textAlign: "center" }}>
+              {" "}
+              Current Trends{" "}
+            </h3>
             <div>
               <span style={{ margin: "30px" }}>
                 {this.props.question.optionOne.text}
@@ -143,12 +147,8 @@ export class MyCard extends Component {
 
 const mapStateToProps = ({ authedUser, users, questions }, props) => {
   const qid = props.match.params.question_id;
-
   const user = users[authedUser.userId];
-
   const question = questions[qid];
-
-  console.log(question, qid);
 
   const totalNoOfQuestions =
     question.optionOne.votes.length + question.optionTwo.votes.length;
@@ -156,7 +156,6 @@ const mapStateToProps = ({ authedUser, users, questions }, props) => {
   const votesForOptionOne = parseFloat(
     (question.optionOne.votes.length / totalNoOfQuestions) * 100
   ).toFixed(2);
-
   const votesForOptionTwo = parseFloat(
     (question.optionTwo.votes.length / totalNoOfQuestions) * 100
   ).toFixed(2);

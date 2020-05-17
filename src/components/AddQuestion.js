@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Modal, Button, Form } from "react-bootstrap/";
 import { handleAddQuestion } from "../actions/questions";
-import { delayRedirect } from "../utils/helper";
+import { Redirect } from "react-router-dom";
 
 export class AddQuestion extends Component {
   state = {
@@ -28,16 +28,23 @@ export class AddQuestion extends Component {
     }));
   };
 
+  backToDashboard = () => {
+    this.setState({
+      backToDashboard: true,
+    });
+  };
+
   render() {
     const { optionOne, optionTwo, backToDashboard } = this.state;
 
     if (backToDashboard) {
-      delayRedirect(2000, this.props);
+      return <Redirect to="/" />;
     }
+
     return (
       <div>
         <Modal.Dialog style={{ border: "1px solid #e9ecef" }}>
-          <Modal.Header closeButton>
+          <Modal.Header>
             <Modal.Title>Would You Rather !!!</Modal.Title>
           </Modal.Header>
 
@@ -51,6 +58,7 @@ export class AddQuestion extends Component {
                   name="optionOne"
                   value={this.state.optionOne}
                   onChange={this.handleChange}
+                  autoFocus={true}
                 />
               </Form.Group>
               <Form.Group controlId="formGroupChoice2">

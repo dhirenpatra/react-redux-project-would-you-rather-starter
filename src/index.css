@@ -37,12 +37,6 @@ body {
   border-radius: 10px;
   margin: 20px;
 }
-.poll-list-container {
-  padding: 20px;
-  background-color: #fff;
-  height: calc(100vh - 100px);
-  overflow-y: auto;
-}
 
 .card-container,
 .card-container:hover {
@@ -59,11 +53,6 @@ body {
   font-size: 26px;
   color: #2e0404;
   font-weight: 600;
-  justify-content: center;
-}
-
-.answered {
-  justify-content: end;
 }
 
 .card .time {
@@ -75,10 +64,6 @@ body {
   font-size: 18px;
   font-weight: 600;
   justify-content: center;
-}
-.tweet-info > span:first-child {
-  font-weight: 700;
-  margin-right: 5px;
 }
 
 input:focus {
@@ -92,15 +77,23 @@ input:focus {
 
 .login_btn:hover {
   color: #fff;
-  background-color: #ff0000;
+  background-color: #0b597e;
 }
 
 .btn-outline-danger {
   color: #fff;
   font-size: 18px;
-  background-color: #28a745;
+  background-color: #9ba820;
   background-image: none;
   border-color: #28a745;
+}
+
+.btn-outline-success {
+  color: #fff;
+  font-size: 18px;
+  background-color: #5b5c55;
+  background-image: none;
+  border-color: #799ee2;
 }
 
 .form-control {
@@ -128,10 +121,10 @@ input:focus {
   font-size: 1.5rem;
   font-weight: 80;
   line-height: 1.6;
-  color: #0870d8;
+  color: #112336;
   text-align: center;
   white-space: nowrap;
-  background-color: #393c3f;
+  background-color: #dce3eb;
   border: 1px solid #ced4da;
   border-radius: 0;
 }
@@ -149,4 +142,15 @@ input:focus {
 
 .radio {
   margin: 20px;
+}
+
+.text-whitesmoke {
+  color: rgb(43, 28, 28);
+}
+.text-darkyellow {
+  color: rgba(49, 45, 8, 0.432);
+}
+
+.text-center {
+  text-align: center;
 }

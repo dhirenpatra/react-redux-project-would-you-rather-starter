@@ -3,8 +3,6 @@ import { showLoading, hideLoading } from "react-redux-loading";
 import { initialUsers } from "./users";
 import { initialQuestions } from "./questions";
 
-export const INITIAL_DATA = "INITIAL_DATA";
-
 export function getInitialData() {
   return Promise.all([_getUsers(), _getQuestions()]).then(
     ([users, questions]) => ({
